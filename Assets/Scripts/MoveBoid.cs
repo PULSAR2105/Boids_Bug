@@ -20,9 +20,12 @@ public class MoveBoid : MonoBehaviour
     float distBetGoal;
     float angle;
 
-    public float distBetGoalMax;
-    public float distBetGoalSideMax;
-    public float multiRotationHit = 1f;
+    public float distRayMax;
+    public float distRaySideMax;
+    public float multiRotationHit;
+
+    Vector3 vectorToTarget;
+    Quaternion q;
 
     void Start() {
         goal = GameObject.Find("Goal");
@@ -32,52 +35,50 @@ public class MoveBoid : MonoBehaviour
     }
 
     void Update() {
-        RaycastHit2D hitLeft = Physics2D.Raycast(transform.position, transform.up, distBetGoalSideMax);
-        RaycastHit2D hitForward = Physics2D.Raycast(transform.position, transform.right, distBetGoalMax);
-        RaycastHit2D hitRight = Physics2D.Raycast(transform.position, -transform.up, distBetGoalSideMax);
+        RaycastHit2D hitLeft = Physics2D.Raycast(transform.localPosition, transform.up, distRaySideMax);
+        RaycastHit2D hitForward = Physics2D.Raycast(transform.localPosition, transform.right, distRayMax);
+        RaycastHit2D hitRight = Physics2D.Raycast(transform.localPosition, -transform.up, distRaySideMax);
 
-        Vector3 vectorToTarget = goal.transform.position - transform.position;
+        vectorToTarget = goal.transform.localPosition - transform.localPosition;
 
-        if(hitForward && hitLeft && hitRight) {
-            angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
-            moveBoid(1f, angle);
+        if(hitForward || hitLeft || hitRight) {
+            // Managing the speed rotation of the boid
+            if(hitForward && hitLeft && hitRight) {
+                angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
+                moveBoid(1f, angle);
 
-        } else if(hitForward) {
-            if(vectorToTarget.x * vectorToTarget.y <= 0) {
-                angle = (transform.eulerAngles.z + 90)%360;
+            } else if(hitForward) {
+                if(vectorToTarget.x * vectorToTarget.y <= 0) {
+                    angle = (transform.eulerAngles.z + 90)%360;
 
-            } else if(vectorToTarget.x * vectorToTarget.y > 0) {
-                angle = (transform.eulerAngles.z - 90)%360;
+                } else {
+                    angle = (transform.eulerAngles.z - 90)%360;
+                }
+                moveBoid(multiRotationHit, angle);
 
+            } else if(hitLeft) {
+                    angle = (transform.eulerAngles.z - 45f)%360;
+                    moveBoid(multiRotationHit, angle);
+
+            } else if(hitRight) {
+                    angle = (transform.eulerAngles.z + 45f)%360;
+                    moveBoid(multiRotationHit, angle);
+
+            } else {
+                angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
+                moveBoid(1f, angle);
             }
-            moveBoid(multiRotationHit, angle);
-
-        } else if(hitLeft) {
-            angle = (transform.eulerAngles.z - 45f)%360;
-            moveBoid(multiRotationHit, angle);
-
-        } else if(hitRight) {
-            angle = (transform.eulerAngles.z + 45f)%360;
-            moveBoid(multiRotationHit, angle);
-
-        } else if(hitForward && hitLeft) {
-            angle = (transform.eulerAngles.z - 90)%360;
-            moveBoid(multiRotationHit, angle);
-
-        } else if(hitForward && hitRight) {
-            angle = (transform.eulerAngles.z + 90)%360;
-            moveBoid(multiRotationHit, angle);
-
         } else {
-            angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
-            moveBoid(1f, angle);
+                angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
+                moveBoid(1f, angle);
         }
     }
 
+    // Move the boid
     void moveBoid(float _multiRotationHit, float _angle) {
-        Quaternion q = Quaternion.AngleAxis(_angle, Vector3.forward);
+        q = Quaternion.AngleAxis(_angle, Vector3.forward);
 
-        distBetGoal = Vector3.Distance(goal.transform.position, transform.position);
+        distBetGoal = Vector3.Distance(goal.transform.localPosition, transform.localPosition);
         if(Input.GetMouseButton(0)){
             transform.rotation = Quaternion.Slerp(transform.rotation, q, speedRotation * multiRotation * _multiRotationHit * f(distBetGoal) * Time.deltaTime);
             transform.Translate(speed * multiSpeed * Time.deltaTime);

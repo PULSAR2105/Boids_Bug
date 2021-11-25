@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class MoveGoal : MonoBehaviour
 {
+    public GameObject lightGoal;
+
     void Start() {
-        
+
     }
 
-    void Update() {
+    void FixedUpdate() {
         Vector3 position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
         position.z = 0;
-        gameObject.transform.position = position; 
+        gameObject.transform.localPosition = position;
+        lightGoal.transform.localPosition = position;
     }
 }
