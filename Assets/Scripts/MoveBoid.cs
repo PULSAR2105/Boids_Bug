@@ -34,7 +34,7 @@ public class MoveBoid : MonoBehaviour
         speedRotation = Random.Range(speedRotationMin, speedRotationMax);
     }
 
-    void Update() {
+    void FixedUpdate() {
         RaycastHit2D hitLeft = Physics2D.Raycast(transform.localPosition, transform.up, distRaySideMax);
         RaycastHit2D hitForward = Physics2D.Raycast(transform.localPosition, transform.right, distRayMax);
         RaycastHit2D hitRight = Physics2D.Raycast(transform.localPosition, -transform.up, distRaySideMax);

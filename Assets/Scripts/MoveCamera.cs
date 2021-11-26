@@ -9,7 +9,7 @@ public class MoveCamera : MonoBehaviour
         
     }
 
-    void Update()
+    void FixedUpdate()
     {
         Vector3 position = Input.mousePosition;
 

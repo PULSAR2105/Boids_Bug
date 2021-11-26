@@ -24,7 +24,7 @@ public class Gun : MonoBehaviour
         ray.SetPosition(1, transform.position);
     }
 
-    void Update() {
+    void FixedUpdate() {
        hitFriend = Physics2D.Raycast(transform.position, transform.right, distanceHit, 4);
        hitWall = Physics2D.Raycast(transform.position + transform.right * 1.5f, transform.right, distanceHit);
        
