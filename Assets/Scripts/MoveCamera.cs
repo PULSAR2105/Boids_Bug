@@ -4,16 +4,22 @@ using UnityEngine;
 
 public class MoveCamera : MonoBehaviour
 {
-    void Start()
-    {
-        
+    public float speed = 1.0f;
+    Vector3 vectorBetGoal;
+    GameObject goal;
+
+    void Start() {
+        goal = GameObject.Find("Goal");
     }
 
-    void FixedUpdate()
-    {
-        Vector3 position = Input.mousePosition;
+    void FixedUpdate() {
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        vectorBetGoal = transform.position - mousePosition;
 
-        position.z = 0;
-        transform.localPosition = position;
+        vectorBetGoal.z = 0;
+
+        if(goal != null) {
+            gameObject.transform.Translate(-vectorBetGoal * speed * Time.deltaTime, Space.World);
+        }
     }
 }

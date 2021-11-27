@@ -5,16 +5,19 @@ using UnityEngine;
 public class MoveGoal : MonoBehaviour
 {
     public GameObject lightGoal;
+    Vector3 vectorBetGoal;
 
     void Start() {
 
     }
 
     void FixedUpdate() {
-        Vector3 position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        vectorBetGoal = transform.position - mousePosition;
 
-        position.z = 0;
-        gameObject.transform.localPosition = position;
-        lightGoal.transform.localPosition = position;
+        vectorBetGoal.z = 0;
+
+        gameObject.transform.Translate(-vectorBetGoal * Time.deltaTime * 20, Space.World);
+        lightGoal.transform.position = transform.position;
     }
 }

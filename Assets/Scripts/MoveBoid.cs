@@ -39,7 +39,12 @@ public class MoveBoid : MonoBehaviour
         RaycastHit2D hitForward = Physics2D.Raycast(transform.localPosition, transform.right, distRayMax);
         RaycastHit2D hitRight = Physics2D.Raycast(transform.localPosition, -transform.up, distRaySideMax);
 
-        vectorToTarget = goal.transform.localPosition - transform.localPosition;
+        if(goal != null) {
+            vectorToTarget = goal.transform.localPosition - transform.localPosition;
+        }
+        else {
+            vectorToTarget = Vector3.zero;
+        }
 
         if(hitForward || hitLeft || hitRight) {
             // Managing the speed rotation of the boid
@@ -78,13 +83,23 @@ public class MoveBoid : MonoBehaviour
     void moveBoid(float _multiRotationHit, float _angle) {
         q = Quaternion.AngleAxis(_angle, Vector3.forward);
 
-        distBetGoal = Vector3.Distance(goal.transform.localPosition, transform.localPosition);
+        if(goal != null) {
+            distBetGoal = Vector3.Distance(goal.transform.localPosition, transform.localPosition);
+        }
+        else {
+            distBetGoal = 0;
+        }
+        
         if(Input.GetMouseButton(0)){
-            transform.rotation = Quaternion.Slerp(transform.rotation, q, speedRotation * multiRotation * _multiRotationHit * f(distBetGoal) * Time.deltaTime);
+            if(goal != null) {
+                transform.rotation = Quaternion.Slerp(transform.rotation, q, speedRotation * multiRotation * _multiRotationHit * f(distBetGoal) * Time.deltaTime);
+            }
             transform.Translate(speed * multiSpeed * Time.deltaTime);
         }
         else{
-            transform.rotation = Quaternion.Slerp(transform.rotation, q, speedRotation * _multiRotationHit * f(distBetGoal) * Time.deltaTime);
+            if(goal != null) {
+                transform.rotation = Quaternion.Slerp(transform.rotation, q, speedRotation * _multiRotationHit * f(distBetGoal) * Time.deltaTime);
+            }
             transform.Translate(speed * Time.deltaTime);
         }
     }

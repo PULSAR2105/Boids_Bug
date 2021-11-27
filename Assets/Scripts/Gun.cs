@@ -59,7 +59,10 @@ public class Gun : MonoBehaviour
         vectorToTarget = target.transform.localPosition - transform.localPosition;
         angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
         q = Quaternion.AngleAxis(angle, Vector3.forward);
-        transform.rotation = Quaternion.Slerp(transform.rotation, q, speedRotation * Time.deltaTime);
+        
+        if(!_isShot) {
+            transform.rotation = Quaternion.Slerp(transform.rotation, q, speedRotation * Time.deltaTime);
+        }
 
         hitFriend = Physics2D.Raycast(transform.position, transform.right, distanceHit, 4);
         hitWall = Physics2D.Raycast(transform.position + transform.right * 1.5f, transform.right, distanceHit);

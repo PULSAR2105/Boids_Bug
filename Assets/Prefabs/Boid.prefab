@@ -97,8 +97,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goal: {fileID: 0}
-  speedMax: 6
-  speedMin: 4
+  speedMax: 7
+  speedMin: 5
   speedRotationMax: 4
   speedRotationMin: 1
   multiRotation: 3
