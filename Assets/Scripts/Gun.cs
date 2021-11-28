@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
+    public BoidsManager manager;
+
     public float distanceHit;
     public LineRenderer ray;
     Transform[] Positions;
@@ -13,10 +15,10 @@ public class Gun : MonoBehaviour
     public float reactionTime;
     bool _isShot = false;
 
-    RaycastHit2D hitFriend;
+    RaycastHit2D hitEnemy;
     RaycastHit2D hitWall;
 
-    GameObject[] friends;
+    GameObject[] enemies;
     GameObject goal;
     GameObject target;
     public float speedRotation;
@@ -37,19 +39,22 @@ public class Gun : MonoBehaviour
 
     void FixedUpdate() {
         mindist = Mathf.Infinity;
-        friends = GameObject.FindGameObjectsWithTag("Boid");
+        enemies = GameObject.FindGameObjectsWithTag("Boid");
 
-        foreach (GameObject friend in friends) {
-            dist = Vector3.Distance(friend.transform.position, transform.position);
+        foreach (GameObject enemy in enemies) {
+            dist = Vector3.Distance(enemy.transform.position, transform.position);
             if (dist < mindist)
             {
                 mindist = dist;
-                target = friend;
+                target = enemy;
             }
             
         }
 
-        dist = Vector3.Distance(goal.transform.position, transform.position);
+        if(goal != null) {
+            dist = Vector3.Distance(goal.transform.position, transform.position);
+        }
+        
         if (dist < mindist)
         {
             mindist = dist;
@@ -64,13 +69,13 @@ public class Gun : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, q, speedRotation * Time.deltaTime);
         }
 
-        hitFriend = Physics2D.Raycast(transform.position, transform.right, distanceHit, 4);
+        hitEnemy = Physics2D.Raycast(transform.position, transform.right, distanceHit, 4);
         hitWall = Physics2D.Raycast(transform.position + transform.right * 1.5f, transform.right, distanceHit);
         
-        if(hitFriend && hitWall) {
+        if(hitEnemy && hitWall) {
              StartCoroutine(shot());
         } 
-        if(hitFriend && !hitWall) {
+        if(hitEnemy && !hitWall) {
              StartCoroutine(shot());
         }
     }
@@ -78,26 +83,28 @@ public class Gun : MonoBehaviour
     IEnumerator shot() {
         yield return new WaitForSeconds(reactionTime);
 
-        if(hitFriend && hitWall) {
-           if(hitWall.distance > hitFriend.distance) {
+        if(hitEnemy && hitWall) {
+           if(hitWall.distance > hitEnemy.distance) {
                if(!_isShot) {
                     _isShot = true;
                     ray.positionCount = 2;
                     ray.SetPosition(0, transform.position);
-                    ray.SetPosition(1, hitFriend.point);
-                    Destroy(hitFriend.transform.gameObject);
+                    ray.SetPosition(1, hitEnemy.point);
+                    Destroy(hitEnemy.transform.gameObject);
+                    manager.numberEntities--;
                     StartCoroutine(durationShot());
                     StartCoroutine(isShot());
                }
            }
        } 
-       if(hitFriend && !hitWall) {
+       if(hitEnemy && !hitWall) {
             if(!_isShot) {
                     _isShot = true;
                     ray.positionCount = 2;
                     ray.SetPosition(0, transform.position);
-                    ray.SetPosition(1, hitFriend.point);
-                    Destroy(hitFriend.transform.gameObject);
+                    ray.SetPosition(1, hitEnemy.point);
+                    Destroy(hitEnemy.transform.gameObject);
+                    manager.numberEntities--;
                     StartCoroutine(durationShot());
                     StartCoroutine(isShot());
                }

@@ -40,11 +40,12 @@
      <Compile Include="Assets\Scripts\ProcessingShadow.cs" />
      <Compile Include="Assets\Scripts\MoveBoid.cs" />
      <Compile Include="Assets\HardLight2D\Demo\DemoScripts\MeshCopy.cs" />
-     <Compile Include="Assets\Scripts\SetBoids.cs" />
      <Compile Include="Assets\HardLight2D\Demo\DemoScripts\Speen.cs" />
+     <Compile Include="Assets\Scripts\MoveCamera.cs" />
      <Compile Include="Assets\HardLight2D\Demo\DemoScripts\PolyWobbler.cs" />
      <Compile Include="Assets\Scripts\MoveGoal.cs" />
-     <Compile Include="Assets\Scripts\MoveCamera.cs" />
+     <Compile Include="Assets\Scripts\HealthGun.cs" />
+     <Compile Include="Assets\Scripts\BoidsManager.cs" />
      <None Include="Assets\HardLight2D\ReadMe - FAQ.txt" />
      <None Include="Assets\HardLight2D\Material\AdditiveShader.shader" />
     <Reference Include="UnityEngine">
@@ -268,6 +269,9 @@
     </Reference>
     <Reference Include="UnityEditor.UnityConnectModule">
         <HintPath>C:\Program Files\Unity\2020.3.23f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Collections.LowLevel.ILSupport">
+        <HintPath>C:\Users\vince\Desktop\Boids-Bug\Library\PackageCache\com.unity.collections@1.0.0-pre.5\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Unsafe">
         <HintPath>C:\Users\vince\Desktop\Boids-Bug\Library\PackageCache\com.unity.burst@1.5.6\Unity.Burst.Unsafe.dll</HintPath>
@@ -698,6 +702,9 @@
     <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
         <HintPath>C:\Users\vince\Desktop\Boids-Bug\Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Jobs.Editor">
+        <HintPath>C:\Users\vince\Desktop\Boids-Bug\Library\ScriptAssemblies\Unity.Jobs.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.UI">
         <HintPath>C:\Users\vince\Desktop\Boids-Bug\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
@@ -715,6 +722,9 @@
     </Reference>
     <Reference Include="Unity.Burst">
         <HintPath>C:\Users\vince\Desktop\Boids-Bug\Library\ScriptAssemblies\Unity.Burst.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Jobs">
+        <HintPath>C:\Users\vince\Desktop\Boids-Bug\Library\ScriptAssemblies\Unity.Jobs.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Animation.Triangle.Runtime">
         <HintPath>C:\Users\vince\Desktop\Boids-Bug\Library\ScriptAssemblies\Unity.2D.Animation.Triangle.Runtime.dll</HintPath>
@@ -739,6 +749,9 @@
     </Reference>
     <Reference Include="Unity.2D.SpriteShape.Editor">
         <HintPath>C:\Users\vince\Desktop\Boids-Bug\Library\ScriptAssemblies\Unity.2D.SpriteShape.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Collections">
+        <HintPath>C:\Users\vince\Desktop\Boids-Bug\Library\ScriptAssemblies\Unity.Collections.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Common.Editor">
         <HintPath>C:\Users\vince\Desktop\Boids-Bug\Library\ScriptAssemblies\Unity.2D.Common.Editor.dll</HintPath>

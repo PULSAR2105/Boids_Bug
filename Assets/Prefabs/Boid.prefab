@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8151081232735468533}
   - component: {fileID: 8151081232735468532}
-  - component: {fileID: 8151081232735468535}
   - component: {fileID: -1569474534789281013}
+  - component: {fileID: 5699077822988392486}
   m_Layer: 2
   m_Name: Boid
   m_TagString: Boid
@@ -84,28 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8151081232735468535
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8151081232735468534}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3977c855f9c737a46a3fdd768f0ae04d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goal: {fileID: 0}
-  speedMax: 7
-  speedMin: 5
-  speedRotationMax: 4
-  speedRotationMin: 1
-  multiRotation: 3
-  multiSpeed: 1.5
-  distRayMax: 0.7
-  distRaySideMax: 0.3
-  multiRotationHit: 25
 --- !u!61 &-1569474534789281013
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -132,3 +110,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.25, y: 0.24}
   m_EdgeRadius: 0
+--- !u!114 &5699077822988392486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8151081232735468534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f623f59dabf27742a21d1647c1b5066, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goal: {fileID: 0}
+  speedMax: 7
+  speedMin: 4
+  speedRotationMax: 4
+  speedRotationMin: 1
+  multiRotation: 3
+  multiSpeed: 1.5
+  distRayMax: 0.7
+  distRaySideMax: 0.5
+  multiRotationHit: 20

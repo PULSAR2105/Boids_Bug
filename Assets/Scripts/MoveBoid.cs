@@ -5,7 +5,7 @@ using UnityEngine;
 public class MoveBoid : MonoBehaviour
 {
     public GameObject goal;
-
+    
     public float speedMax;
     public float speedMin;
     Vector2 speed;
@@ -14,8 +14,8 @@ public class MoveBoid : MonoBehaviour
     public float speedRotationMin;
     float speedRotation;
 
-    public float multiRotation = 2f;
-    public float multiSpeed = 1.5f;
+    public float multiRotation;
+    public float multiSpeed;
 
     float distBetGoal;
     float angle;
