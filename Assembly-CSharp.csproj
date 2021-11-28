@@ -43,9 +43,10 @@
      <Compile Include="Assets\HardLight2D\Demo\DemoScripts\Speen.cs" />
      <Compile Include="Assets\Scripts\MoveCamera.cs" />
      <Compile Include="Assets\HardLight2D\Demo\DemoScripts\PolyWobbler.cs" />
+     <Compile Include="Assets\Scripts\BoidsManager.cs" />
      <Compile Include="Assets\Scripts\MoveGoal.cs" />
      <Compile Include="Assets\Scripts\HealthGun.cs" />
-     <Compile Include="Assets\Scripts\BoidsManager.cs" />
+     <Compile Include="Assets\Scripts\Dash.cs" />
      <None Include="Assets\HardLight2D\ReadMe - FAQ.txt" />
      <None Include="Assets\HardLight2D\Material\AdditiveShader.shader" />
     <Reference Include="UnityEngine">

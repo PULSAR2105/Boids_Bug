@@ -5,7 +5,7 @@ using UnityEngine;
 public class MoveGoal : MonoBehaviour
 {
     public GameObject lightGoal;
-    Vector3 vectorBetGoal;
+    public Vector3 vectorBetGoal;
 
     void Start() {
 

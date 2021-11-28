@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MoveBoid : MonoBehaviour
 {
-    public GameObject goal;
+    public Dash dash;
     
     public float speedMax;
     public float speedMin;
@@ -28,8 +28,6 @@ public class MoveBoid : MonoBehaviour
     Quaternion q;
 
     void Start() {
-        goal = GameObject.Find("Goal");
-
         speed.x = Random.Range(speedMin, speedMax);
         speedRotation = Random.Range(speedRotationMin, speedRotationMax);
     }
@@ -39,8 +37,8 @@ public class MoveBoid : MonoBehaviour
         RaycastHit2D hitForward = Physics2D.Raycast(transform.localPosition, transform.right, distRayMax);
         RaycastHit2D hitRight = Physics2D.Raycast(transform.localPosition, -transform.up, distRaySideMax);
 
-        if(goal != null) {
-            vectorToTarget = goal.transform.localPosition - transform.localPosition;
+        if(dash.dashTarget != null) {
+            vectorToTarget = dash.dashTarget.transform.localPosition - transform.localPosition;
         }
         else {
             vectorToTarget = Vector3.zero;
@@ -83,25 +81,17 @@ public class MoveBoid : MonoBehaviour
     void moveBoid(float _multiRotationHit, float _angle) {
         q = Quaternion.AngleAxis(_angle, Vector3.forward);
 
-        if(goal != null) {
-            distBetGoal = Vector3.Distance(goal.transform.localPosition, transform.localPosition);
+        if(dash.dashTarget != null) {
+            distBetGoal = Vector3.Distance(dash.dashTarget.transform.localPosition, transform.localPosition);
         }
         else {
             distBetGoal = 0;
         }
         
-        if(Input.GetMouseButton(0)){
-            if(goal != null) {
-                transform.rotation = Quaternion.Slerp(transform.rotation, q, speedRotation * multiRotation * _multiRotationHit * f(distBetGoal) * Time.deltaTime);
-            }
-            transform.Translate(speed * multiSpeed * Time.deltaTime);
+        if(dash.dashTarget != null) {
+            transform.rotation = Quaternion.Slerp(transform.rotation, q, speedRotation * dash.multiRotation * _multiRotationHit * f(distBetGoal) * Time.deltaTime);
         }
-        else{
-            if(goal != null) {
-                transform.rotation = Quaternion.Slerp(transform.rotation, q, speedRotation * _multiRotationHit * f(distBetGoal) * Time.deltaTime);
-            }
-            transform.Translate(speed * Time.deltaTime);
-        }
+        transform.Translate(speed * dash.multiSpeed * Time.deltaTime);
     }
 
     float f(float x){
