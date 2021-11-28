@@ -90,8 +90,9 @@ public class Gun : MonoBehaviour
                     ray.positionCount = 2;
                     ray.SetPosition(0, transform.position);
                     ray.SetPosition(1, hitEnemy.point);
-                    Destroy(hitEnemy.transform.gameObject);
-                    manager.numberEntities--;
+
+                    manager.DestroyBoid(hitEnemy.collider.gameObject);
+
                     StartCoroutine(durationShot());
                     StartCoroutine(isShot());
                }
@@ -103,8 +104,9 @@ public class Gun : MonoBehaviour
                     ray.positionCount = 2;
                     ray.SetPosition(0, transform.position);
                     ray.SetPosition(1, hitEnemy.point);
-                    Destroy(hitEnemy.transform.gameObject);
-                    manager.numberEntities--;
+
+                    manager.DestroyBoid(hitEnemy.collider.gameObject);
+
                     StartCoroutine(durationShot());
                     StartCoroutine(isShot());
                }
