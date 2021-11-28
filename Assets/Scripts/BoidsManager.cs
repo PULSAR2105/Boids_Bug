@@ -11,7 +11,7 @@ public class BoidsManager : MonoBehaviour
     public GameObject goal;
     GameObject[] boids;
     public float spawnSpeed;
-    public float bonusBoidSpawnSpeed;
+    public float boidSpawnSpeed;
 
     public int numberEntities;
     public int boidBonus = 0;
@@ -24,7 +24,7 @@ public class BoidsManager : MonoBehaviour
 
     void FixedUpdate(){
         if(boidBonus > 0){
-            StartCoroutine(AddBoids(boidBonus, bonusBoidSpawnSpeed));
+            StartCoroutine(AddBoids(boidBonus, boidSpawnSpeed));
             boidBonus = 0;
         }
     }
