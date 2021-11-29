@@ -8,6 +8,11 @@ public class MoveCamera : MonoBehaviour
     Vector3 vectorBetGoal;
     GameObject goal;
 
+    public float limitX;
+    public float limitY;
+    public float limitX2;
+    public float limitY2;
+
     void Start() {
         goal = GameObject.Find("Goal");
     }
@@ -18,8 +23,25 @@ public class MoveCamera : MonoBehaviour
 
         vectorBetGoal.z = 0;
 
+        Collider();
         if(goal != null) {
             gameObject.transform.Translate(-vectorBetGoal * speed * Time.deltaTime, Space.World);
+        }
+    }
+
+    void Collider() {
+        if(goal != null) {
+            if(transform.position.x - 0.1 <= limitX) {
+                if(vectorBetGoal.x > 0) {
+                    vectorBetGoal.x = 0;
+                }
+            }
+
+            if(transform.position.y + 0.25 >= limitY) {
+                if(vectorBetGoal.y < 0) {
+                    vectorBetGoal.y = 0;
+                }
+            }
         }
     }
 }

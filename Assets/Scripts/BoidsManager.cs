@@ -23,9 +23,16 @@ public class BoidsManager : MonoBehaviour
     }
 
     void FixedUpdate(){
+        boids = GameObject.FindGameObjectsWithTag("Boid");
+        if(boids.Length < numberEntities) {
+            StartCoroutine(AddBoids(numberEntities - boids.Length, boidSpawnSpeed));
+        }
+        
         if(boidBonus > 0){
-            StartCoroutine(AddBoids(boidBonus, boidSpawnSpeed));
-            boidBonus = 0;
+            if(goal != null) {
+                StartCoroutine(AddBoids(boidBonus, boidSpawnSpeed));
+                boidBonus = 0;
+            }
         }
     }
 

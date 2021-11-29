@@ -47,6 +47,7 @@
      <Compile Include="Assets\Scripts\BoidsManager.cs" />
      <Compile Include="Assets\Scripts\MoveGoal.cs" />
      <Compile Include="Assets\Scripts\HealthGun.cs" />
+     <Compile Include="Assets\Scripts\SceneManage.cs" />
      <None Include="Assets\HardLight2D\ReadMe - FAQ.txt" />
      <None Include="Assets\HardLight2D\Material\AdditiveShader.shader" />
     <Reference Include="UnityEngine">
