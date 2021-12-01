@@ -21,7 +21,6 @@ ScriptsOnlyBuild:
     - UnityEditor.U2D.IK.IKGizmos
     Unity.2D.Tilemap.Editor.dll:
     - UnityEditor.Tilemaps.GridBrush
-    - UnityEditor.Tilemaps.GridBrushEditor
     - UnityEditor.Tilemaps.GridPaintPaletteClipboard
     - UnityEditor.Tilemaps.GridPaintPaletteWindow
     - UnityEditor.Tilemaps.GridPaintingState
@@ -1274,4 +1273,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/Level01.unity
   - Assets/Scenes/TheEnd.unity
   - Assets/Scenes/GameOver.unity
-  playerPath: C:/Users/vince/Desktop/Boids_Bug/build/Boids_Bug/Boids bug.exe
+  playerPath: C:/Users/vince/Desktop/Boids_Bug/build/Boids_Bug/Boids_Bug.exe
