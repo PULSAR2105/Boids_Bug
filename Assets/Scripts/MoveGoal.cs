@@ -44,5 +44,17 @@ public class MoveGoal : MonoBehaviour
                 vectorBetGoal.y = 0;
             }
         }
+
+        if(transform.position.x + 0.1 >= limitX2) {
+                if(vectorBetGoal.x < 0) {
+                    vectorBetGoal.x = 0;
+                }
+            }
+
+            if(transform.position.y - 0.25 <= limitY2) {
+                if(vectorBetGoal.y > 0) {
+                    vectorBetGoal.y = 0;
+                }
+            }
     }
 }

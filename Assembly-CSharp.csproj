@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{f88d7d44-9d30-8019-ecf7-362fc98b8fc0}</ProjectGuid>
+    <ProjectGuid>{6899970f-7df0-4be8-b4dd-e8b54f384c5c}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -38,6 +38,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Gun.cs" />
      <Compile Include="Assets\Scripts\ProcessingShadow.cs" />
+     <Compile Include="Assets\Scripts\SceneManage.cs" />
      <Compile Include="Assets\Scripts\MoveBoid.cs" />
      <Compile Include="Assets\Scripts\Dash.cs" />
      <Compile Include="Assets\HardLight2D\Demo\DemoScripts\MeshCopy.cs" />
@@ -47,7 +48,8 @@
      <Compile Include="Assets\Scripts\BoidsManager.cs" />
      <Compile Include="Assets\Scripts\MoveGoal.cs" />
      <Compile Include="Assets\Scripts\HealthGun.cs" />
-     <Compile Include="Assets\Scripts\SceneManage.cs" />
+     <Compile Include="Assets\Scripts\HealthMac.cs" />
+     <Compile Include="Assets\Scripts\Quit.cs" />
      <None Include="Assets\HardLight2D\ReadMe - FAQ.txt" />
      <None Include="Assets\HardLight2D\Material\AdditiveShader.shader" />
     <Reference Include="UnityEngine">
@@ -273,28 +275,28 @@
         <HintPath>C:\Program Files\Unity\2020.3.23f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Collections.LowLevel.ILSupport">
-        <HintPath>C:\Users\vince\Desktop\Boids-Bug\Library\PackageCache\com.unity.collections@1.0.0-pre.5\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
+        <HintPath>C:\Users\vince\Desktop\Boids_Bug\Library\PackageCache\com.unity.collections@1.0.0-pre.5\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Unsafe">
-        <HintPath>C:\Users\vince\Desktop\Boids-Bug\Library\PackageCache\com.unity.burst@1.5.6\Unity.Burst.Unsafe.dll</HintPath>
+        <HintPath>C:\Users\vince\Desktop\Boids_Bug\Library\PackageCache\com.unity.burst@1.5.6\Unity.Burst.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Cecil.Mdb">
-        <HintPath>C:\Users\vince\Desktop\Boids-Bug\Library\PackageCache\com.unity.burst@1.5.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.Mdb.dll</HintPath>
+        <HintPath>C:\Users\vince\Desktop\Boids_Bug\Library\PackageCache\com.unity.burst@1.5.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.Mdb.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Cecil.Pdb">
-        <HintPath>C:\Users\vince\Desktop\Boids-Bug\Library\PackageCache\com.unity.burst@1.5.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.Pdb.dll</HintPath>
+        <HintPath>C:\Users\vince\Desktop\Boids_Bug\Library\PackageCache\com.unity.burst@1.5.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.Pdb.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Cecil">
-        <HintPath>C:\Users\vince\Desktop\Boids-Bug\Library\PackageCache\com.unity.burst@1.5.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.dll</HintPath>
+        <HintPath>C:\Users\vince\Desktop\Boids_Bug\Library\PackageCache\com.unity.burst@1.5.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.dll</HintPath>
     </Reference>
     <Reference Include="HardLight2D">
-        <HintPath>C:\Users\vince\Desktop\Boids-Bug\Assets\HardLight2D\Scripts\HardLight2D.dll</HintPath>
+        <HintPath>C:\Users\vince\Desktop\Boids_Bug\Assets\HardLight2D\Scripts\HardLight2D.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Cecil.Rocks">
-        <HintPath>C:\Users\vince\Desktop\Boids-Bug\Library\PackageCache\com.unity.burst@1.5.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.Rocks.dll</HintPath>
+        <HintPath>C:\Users\vince\Desktop\Boids_Bug\Library\PackageCache\com.unity.burst@1.5.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.Rocks.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-        <HintPath>C:\Users\vince\Desktop\Boids-Bug\Library\PackageCache\com.unity.nuget.newtonsoft-json@2.0.0\Runtime\Newtonsoft.Json.dll</HintPath>
+        <HintPath>C:\Users\vince\Desktop\Boids_Bug\Library\PackageCache\com.unity.nuget.newtonsoft-json@2.0.0\Runtime\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
         <HintPath>C:\Program Files\Unity\2020.3.23f1\Editor\Data\NetStandard\ref\2.0.0\netstandard.dll</HintPath>
@@ -642,127 +644,127 @@
         <HintPath>C:\Program Files\Unity\2020.3.23f1\Editor\Data\NetStandard\compat\2.0.0\shims\netfx\System.Xml.Serialization.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Animation.Editor">
-        <HintPath>C:\Users\vince\Desktop\Boids-Bug\Library\ScriptAssemblies\Unity.2D.Animation.Editor.dll</HintPath>
+        <HintPath>C:\Users\vince\Desktop\Boids_Bug\Library\ScriptAssemblies\Unity.2D.Animation.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.InternalAPIEngineBridge.001">
-        <HintPath>C:\Users\vince\Desktop\Boids-Bug\Library\ScriptAssemblies\Unity.InternalAPIEngineBridge.001.dll</HintPath>
+        <HintPath>C:\Users\vince\Desktop\Boids_Bug\Library\ScriptAssemblies\Unity.InternalAPIEngineBridge.001.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-        <HintPath>C:\Users\vince\Desktop\Boids-Bug\Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
+        <HintPath>C:\Users\vince\Desktop\Boids_Bug\Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.PixelPerfect">
-        <HintPath>C:\Users\vince\Desktop\Boids-Bug\Library\ScriptAssemblies\Unity.2D.PixelPerfect.dll</HintPath>
+        <HintPath>C:\Users\vince\Desktop\Boids_Bug\Library\ScriptAssemblies\Unity.2D.PixelPerfect.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Tilemap.Editor">
-        <HintPath>C:\Users\vince\Desktop\Boids-Bug\Library\ScriptAssemblies\Unity.2D.Tilemap.Editor.dll</HintPath>
+        <HintPath>C:\Users\vince\Desktop\Boids_Bug\Library\ScriptAssemblies\Unity.2D.Tilemap.Editor.dll</HintPath>
     </Reference>
     <Reference Include="PsdPlugin">
-        <HintPath>C:\Users\vince\Desktop\Boids-Bug\Library\ScriptAssemblies\PsdPlugin.dll</HintPath>
+        <HintPath>C:\Users\vince\Desktop\Boids_Bug\Library\ScriptAssemblies\PsdPlugin.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-        <HintPath>C:\Users\vince\Desktop\Boids-Bug\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
+        <HintPath>C:\Users\vince\Desktop\Boids_Bug\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualStudio.Editor">
-        <HintPath>C:\Users\vince\Desktop\Boids-Bug\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
+        <HintPath>C:\Users\vince\Desktop\Boids_Bug\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-        <HintPath>C:\Users\vince\Desktop\Boids-Bug\Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
+        <HintPath>C:\Users\vince\Desktop\Boids_Bug\Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-        <HintPath>C:\Users\vince\Desktop\Boids-Bug\Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
+        <HintPath>C:\Users\vince\Desktop\Boids_Bug\Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Editor">
-        <HintPath>C:\Users\vince\Desktop\Boids-Bug\Library\ScriptAssemblies\Unity.Burst.Editor.dll</HintPath>
+        <HintPath>C:\Users\vince\Desktop\Boids_Bug\Library\ScriptAssemblies\Unity.Burst.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Searcher.Editor">
-        <HintPath>C:\Users\vince\Desktop\Boids-Bug\Library\ScriptAssemblies\Unity.Searcher.Editor.dll</HintPath>
+        <HintPath>C:\Users\vince\Desktop\Boids_Bug\Library\ScriptAssemblies\Unity.Searcher.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.IK.Editor">
-        <HintPath>C:\Users\vince\Desktop\Boids-Bug\Library\ScriptAssemblies\Unity.2D.IK.Editor.dll</HintPath>
+        <HintPath>C:\Users\vince\Desktop\Boids_Bug\Library\ScriptAssemblies\Unity.2D.IK.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Sprite.Editor">
-        <HintPath>C:\Users\vince\Desktop\Boids-Bug\Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
+        <HintPath>C:\Users\vince\Desktop\Boids_Bug\Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Path.Editor">
-        <HintPath>C:\Users\vince\Desktop\Boids-Bug\Library\ScriptAssemblies\Unity.2D.Path.Editor.dll</HintPath>
+        <HintPath>C:\Users\vince\Desktop\Boids_Bug\Library\ScriptAssemblies\Unity.2D.Path.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Psdimporter.Editor">
-        <HintPath>C:\Users\vince\Desktop\Boids-Bug\Library\ScriptAssemblies\Unity.2D.Psdimporter.Editor.dll</HintPath>
+        <HintPath>C:\Users\vince\Desktop\Boids_Bug\Library\ScriptAssemblies\Unity.2D.Psdimporter.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Runtime">
-        <HintPath>C:\Users\vince\Desktop\Boids-Bug\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
+        <HintPath>C:\Users\vince\Desktop\Boids_Bug\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-        <HintPath>C:\Users\vince\Desktop\Boids-Bug\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
+        <HintPath>C:\Users\vince\Desktop\Boids_Bug\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PlasticSCM.Editor">
-        <HintPath>C:\Users\vince\Desktop\Boids-Bug\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
+        <HintPath>C:\Users\vince\Desktop\Boids_Bug\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-        <HintPath>C:\Users\vince\Desktop\Boids-Bug\Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
+        <HintPath>C:\Users\vince\Desktop\Boids_Bug\Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
-        <HintPath>C:\Users\vince\Desktop\Boids-Bug\Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
+        <HintPath>C:\Users\vince\Desktop\Boids_Bug\Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Jobs.Editor">
-        <HintPath>C:\Users\vince\Desktop\Boids-Bug\Library\ScriptAssemblies\Unity.Jobs.Editor.dll</HintPath>
+        <HintPath>C:\Users\vince\Desktop\Boids_Bug\Library\ScriptAssemblies\Unity.Jobs.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-        <HintPath>C:\Users\vince\Desktop\Boids-Bug\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+        <HintPath>C:\Users\vince\Desktop\Boids_Bug\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.InternalAPIEditorBridge.001">
-        <HintPath>C:\Users\vince\Desktop\Boids-Bug\Library\ScriptAssemblies\Unity.InternalAPIEditorBridge.001.dll</HintPath>
+        <HintPath>C:\Users\vince\Desktop\Boids_Bug\Library\ScriptAssemblies\Unity.InternalAPIEditorBridge.001.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Mathematics">
-        <HintPath>C:\Users\vince\Desktop\Boids-Bug\Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
+        <HintPath>C:\Users\vince\Desktop\Boids_Bug\Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.IK.Runtime">
-        <HintPath>C:\Users\vince\Desktop\Boids-Bug\Library\ScriptAssemblies\Unity.2D.IK.Runtime.dll</HintPath>
+        <HintPath>C:\Users\vince\Desktop\Boids_Bug\Library\ScriptAssemblies\Unity.2D.IK.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ShaderGraph.Editor">
-        <HintPath>C:\Users\vince\Desktop\Boids-Bug\Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll</HintPath>
+        <HintPath>C:\Users\vince\Desktop\Boids_Bug\Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst">
-        <HintPath>C:\Users\vince\Desktop\Boids-Bug\Library\ScriptAssemblies\Unity.Burst.dll</HintPath>
+        <HintPath>C:\Users\vince\Desktop\Boids_Bug\Library\ScriptAssemblies\Unity.Burst.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Jobs">
-        <HintPath>C:\Users\vince\Desktop\Boids-Bug\Library\ScriptAssemblies\Unity.Jobs.dll</HintPath>
+        <HintPath>C:\Users\vince\Desktop\Boids_Bug\Library\ScriptAssemblies\Unity.Jobs.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Animation.Triangle.Runtime">
-        <HintPath>C:\Users\vince\Desktop\Boids-Bug\Library\ScriptAssemblies\Unity.2D.Animation.Triangle.Runtime.dll</HintPath>
+        <HintPath>C:\Users\vince\Desktop\Boids_Bug\Library\ScriptAssemblies\Unity.2D.Animation.Triangle.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Animation.Runtime">
-        <HintPath>C:\Users\vince\Desktop\Boids-Bug\Library\ScriptAssemblies\Unity.2D.Animation.Runtime.dll</HintPath>
+        <HintPath>C:\Users\vince\Desktop\Boids_Bug\Library\ScriptAssemblies\Unity.2D.Animation.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.PixelPerfect.Editor">
-        <HintPath>C:\Users\vince\Desktop\Boids-Bug\Library\ScriptAssemblies\Unity.2D.PixelPerfect.Editor.dll</HintPath>
+        <HintPath>C:\Users\vince\Desktop\Boids_Bug\Library\ScriptAssemblies\Unity.2D.PixelPerfect.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
-        <HintPath>C:\Users\vince\Desktop\Boids-Bug\Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
+        <HintPath>C:\Users\vince\Desktop\Boids_Bug\Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
-        <HintPath>C:\Users\vince\Desktop\Boids-Bug\Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
+        <HintPath>C:\Users\vince\Desktop\Boids_Bug\Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Mathematics.Editor">
-        <HintPath>C:\Users\vince\Desktop\Boids-Bug\Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
+        <HintPath>C:\Users\vince\Desktop\Boids_Bug\Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Common.Runtime">
-        <HintPath>C:\Users\vince\Desktop\Boids-Bug\Library\ScriptAssemblies\Unity.2D.Common.Runtime.dll</HintPath>
+        <HintPath>C:\Users\vince\Desktop\Boids_Bug\Library\ScriptAssemblies\Unity.2D.Common.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.SpriteShape.Editor">
-        <HintPath>C:\Users\vince\Desktop\Boids-Bug\Library\ScriptAssemblies\Unity.2D.SpriteShape.Editor.dll</HintPath>
+        <HintPath>C:\Users\vince\Desktop\Boids_Bug\Library\ScriptAssemblies\Unity.2D.SpriteShape.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Collections">
-        <HintPath>C:\Users\vince\Desktop\Boids-Bug\Library\ScriptAssemblies\Unity.Collections.dll</HintPath>
+        <HintPath>C:\Users\vince\Desktop\Boids_Bug\Library\ScriptAssemblies\Unity.Collections.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Common.Editor">
-        <HintPath>C:\Users\vince\Desktop\Boids-Bug\Library\ScriptAssemblies\Unity.2D.Common.Editor.dll</HintPath>
+        <HintPath>C:\Users\vince\Desktop\Boids_Bug\Library\ScriptAssemblies\Unity.2D.Common.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Editor">
-        <HintPath>C:\Users\vince\Desktop\Boids-Bug\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll</HintPath>
+        <HintPath>C:\Users\vince\Desktop\Boids_Bug\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.SpriteShape.Runtime">
-        <HintPath>C:\Users\vince\Desktop\Boids-Bug\Library\ScriptAssemblies\Unity.2D.SpriteShape.Runtime.dll</HintPath>
+        <HintPath>C:\Users\vince\Desktop\Boids_Bug\Library\ScriptAssemblies\Unity.2D.SpriteShape.Runtime.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BoidsManager : MonoBehaviour
 {
@@ -38,6 +39,9 @@ public class BoidsManager : MonoBehaviour
 
     public void DestroyBoid(GameObject boid){
         Destroy(boid);
+        if(boid.name == "Goal") {
+            StartCoroutine(GameOver());
+        }
         numberEntities--;
         boidsCountText.text = numberEntities.ToString();
     }
@@ -49,5 +53,10 @@ public class BoidsManager : MonoBehaviour
             boidsCountText.text = numberEntities.ToString();
             yield return new WaitForSeconds(_spawnSpeed);
         }
+    }
+
+    IEnumerator GameOver() {
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadScene("GameOver");
     }
 }
