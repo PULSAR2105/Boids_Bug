@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class ProcessingShadow : MonoBehaviour
 {
-
     public GameObject[] enemies;
+
     RaycastHit2D hitEnemy;
 
-    void Start()
-    {
-        
+    void Start() {
     }
 
     void FixedUpdate()
